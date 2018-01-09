@@ -1,0 +1,13 @@
+build:
+  version: 2016-03-14 # version of the build schema.
+  steps:
+    package:
+      name: package
+      dockerfile: Dockerfile.package
+      artifacts:
+        - /src/target/cloud66-client-example-0.1-fat.jar
+    production:
+      name: cloud66-client
+      dockerfile: Dockerfile.production
+      depends_on:
+        - package

@@ -1,0 +1,14 @@
+# our java runtime based on alpine and jdk 8
+FROM openjdk:8u92-jre-alpine
+
+# create our app folder
+WORKDIR /app  
+
+# copy our packed Fat Jar 
+COPY cloud66-client-example-0.1-fat.jar  /app/cloud66-client-example-0.1-fat.jardocker
+
+# set the user as a non-root user
+USER daemon  
+
+# run our vertical
+CMD java -jar cloud66-client-example-0.1-fat.jar  
